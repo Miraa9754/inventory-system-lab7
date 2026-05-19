@@ -152,14 +152,17 @@ a {
   flex-direction: column;
   gap: 20px;
 
-  max-width: 800px;
+  max-width: 1100px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .detailsImage {
   width: 100%;
-  max-height: 400px;
-  object-fit: cover;
+  height: 500px;
+  object-fit: contain;
   border-radius: 12px;
+  background: #f1f5f9;
 }
 
 .detailsPlaceholder {
@@ -181,6 +184,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 100;
 }
 
 .modal {
@@ -210,6 +215,133 @@ a {
   font-weight: bold;
 }
 
+/* GALLERY */
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.galleryCard {
+  width: 280px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.galleryCard:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.galleryImage {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  background: #f1f5f9;
+}
+
+.galleryContent {
+  padding: 18px;
+}
+
+.galleryContent h3 {
+  font-size: 18px;
+}
+
+.favoriteBtn {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  border: none;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition: 0.2s;
+
+  z-index: 5;
+}
+
+.favoriteBtn:hover {
+  transform: scale(1.1);
+}
+
+.favoriteActive {
+  background: #fecdd3;
+}
+
+.quickViewModal {
+  background: white;
+
+  width: 90%;
+  max-width: 900px;
+
+  border-radius: 18px;
+
+  padding: 25px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.quickViewImage {
+  width: 100%;
+
+  height: 500px;
+
+  object-fit: contain;
+
+  background: #f8fafc;
+
+  border-radius: 12px;
+}
+
+.closeBtn {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+
+  border: none;
+
+  background: #e2e8f0;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+.closeBtn:hover {
+  background: #cbd5e1;
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -222,5 +354,9 @@ a {
 
   .inventoryTable {
     min-width: 700px;
+  }
+
+  .quickViewImage {
+    height: 300px;
   }
 }

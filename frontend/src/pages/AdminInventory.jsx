@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ConfirmModal from "../components/inventory/ConfirmModal";
 import InventoryTable from "../components/inventory/InventoryTable";
-import { useInventory } from "../store/InventoryContext";
+import { useInventory } from "../store/useInventory";
 
 function AdminInventory() {
   const { inventory, loading, error, removeInventoryItem } =

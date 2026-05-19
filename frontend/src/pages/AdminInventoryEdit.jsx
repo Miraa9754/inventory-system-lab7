@@ -8,7 +8,7 @@ import {
   updateInventoryText,
 } from "../services/inventoryApi";
 
-import { useInventory } from "../store/InventoryContext";
+import { useInventory } from "../store/useInventory";
 
 function AdminInventoryEdit() {
   const { id } = useParams();

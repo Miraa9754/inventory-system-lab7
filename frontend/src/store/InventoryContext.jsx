@@ -1,17 +1,17 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import {
   deleteInventoryItem,
   getInventory,
 } from "../services/inventoryApi";
 
-const InventoryContext = createContext();
+export const InventoryContext = createContext();
 
 export function InventoryProvider({ children }) {
   const [inventory, setInventory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  async function loadInventory() {
+  const loadInventory = useCallback(async function () {
     try {
       setLoading(true);
       setError("");
@@ -24,7 +24,7 @@ export function InventoryProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }
+  }, []);
 
   async function removeInventoryItem(id) {
     await deleteInventoryItem(id);
@@ -33,7 +33,7 @@ export function InventoryProvider({ children }) {
 
   useEffect(() => {
     loadInventory();
-  }, []);
+  }, [loadInventory]);
 
   return (
     <InventoryContext.Provider
@@ -49,7 +49,4 @@ export function InventoryProvider({ children }) {
     </InventoryContext.Provider>
   );
 }
-
-export function useInventory() {
-  return useContext(InventoryContext);
-}
+export default InventoryProvider;

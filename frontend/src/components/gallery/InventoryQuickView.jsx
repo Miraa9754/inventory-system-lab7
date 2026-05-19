@@ -1,25 +1,25 @@
 import { getPhotoUrl } from "../../services/inventoryApi";
 
-function InventoryDetails({ item }) {
+function InventoryQuickView({ item, onClose }) {
   return (
-    <div className="detailsCard">
-      {item.photo ? (
+    <div className="modalOverlay">
+      <div className="quickViewModal">
+        <button className="closeBtn" onClick={onClose}>
+          ✕
+        </button>
+
         <img
-          className="detailsImage"
+          className="quickViewImage"
           src={getPhotoUrl(item.photo)}
           alt={item.inventory_name}
         />
-      ) : (
-        <div className="detailsPlaceholder">Фото відсутнє</div>
-      )}
 
-      <div>
         <h2>{item.inventory_name}</h2>
+
         <p>{item.description || "Опис відсутній"}</p>
       </div>
     </div>
   );
 }
 
-
-export default InventoryDetails;
+export default InventoryQuickView;

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import InventoryForm from "../components/inventory/InventoryForm";
 import { createInventoryItem } from "../services/inventoryApi";
-import { useInventory } from "../store/InventoryContext";
+import { useInventory } from "../store/useInventory";
 
 function AdminInventoryCreate() {
   const navigate = useNavigate();
